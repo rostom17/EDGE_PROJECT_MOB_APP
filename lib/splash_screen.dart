@@ -7,7 +7,11 @@ class SplashScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: Text("My Todo App"),
+        child: SizedBox(
+          height: MediaQuery.of(context).size.height * .5,
+          width: MediaQuery.of(context).size.width * .5,
+          child: Image.asset("assets/todo_icon.png"),
+        ),
       ),
     );
   }
