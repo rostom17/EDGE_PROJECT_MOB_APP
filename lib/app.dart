@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:my_todo_list/core/controller_bindings.dart';
 import 'package:my_todo_list/features/todo_activity/view/bottom_nav_screen.dart';
 
-import 'package:my_todo_list/splash_screen.dart';
+import 'package:my_todo_list/features/todo_activity/view/splash_screen.dart';
 
 class MyTodoList extends StatelessWidget {
   const MyTodoList({super.key});
@@ -12,6 +13,7 @@ class MyTodoList extends StatelessWidget {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'My Todo List',
+      initialBinding: ControllerBindings(),
       initialRoute: "/",
       getPages: [
         GetPage(name: "/", page: () => SplashScreen()),
