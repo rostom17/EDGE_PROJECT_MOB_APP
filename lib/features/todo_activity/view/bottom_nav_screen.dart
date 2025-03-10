@@ -12,7 +12,8 @@ class BottomNavScreen extends StatefulWidget {
 }
 
 class _BottomNavScreenState extends State<BottomNavScreen> {
-  final BottomNavController _bottomNavController = Get.find<BottomNavController>();
+  final BottomNavController _bottomNavController =
+      Get.find<BottomNavController>();
 
   @override
   Widget build(BuildContext context) {
@@ -23,14 +24,14 @@ class _BottomNavScreenState extends State<BottomNavScreen> {
           return Padding(
             padding: EdgeInsets.only(left: 20, right: 20, bottom: 10),
             child: ClipRRect(
-              borderRadius: BorderRadius.circular(20),
+              borderRadius: BorderRadius.circular(30),
               child: NavigationBar(
                 backgroundColor: Colors.pink,
                 elevation: 1,
                 selectedIndex: _bottomNavController.currentIndex,
-                height: 75,
+                //height: 75,
                 onDestinationSelected: _bottomNavController.onChanged,
-                
+
                 destinations: [
                   NavigationDestination(
                     icon: Icon(Iconsax.home_outline),
@@ -40,12 +41,15 @@ class _BottomNavScreenState extends State<BottomNavScreen> {
                     icon: Icon(Iconsax.calendar_tick_outline),
                     label: "Day View",
                   ),
-                  NavigationDestination(icon: Icon(Iconsax.clock_outline), label: "Focus"),
+                  NavigationDestination(
+                    icon: Icon(Iconsax.clock_outline),
+                    label: "Focus",
+                  ),
                 ],
               ),
             ),
           );
-        }
+        },
       ),
     );
   }
