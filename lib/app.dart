@@ -12,7 +12,6 @@ class MyTodoList extends StatelessWidget {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'My Todo List',
-      home: SplashScreen(),
       initialRoute: "/",
       getPages: [
         GetPage(name: "/", page: () => SplashScreen()),
