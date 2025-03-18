@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:icons_plus/icons_plus.dart';
+import 'package:iconsax/iconsax.dart';
 
 import 'package:my_todo_list/features/todo_activity/controller/bottom_nav_controller.dart';
 import 'package:my_todo_list/features/todo_activity/view/day_activity_screen.dart';
@@ -40,17 +40,13 @@ class _BottomNavScreenState extends State<BottomNavScreen> {
     return NavigationBar(
       selectedIndex: _bottomNavController.currentIndex,
       onDestinationSelected: _bottomNavController.onChanged,
-
       destinations: [
-        NavigationDestination(icon: Icon(Iconsax.home_outline), label: "home"),
+        NavigationDestination(icon: Icon(Iconsax.home), label: "home"),
         NavigationDestination(
-          icon: Icon(Iconsax.calendar_tick_outline),
+          icon: Icon(Iconsax.calendar_edit),
           label: "Day View",
         ),
-        NavigationDestination(
-          icon: Icon(Iconsax.clock_outline),
-          label: "Focus",
-        ),
+        NavigationDestination(icon: Icon(Iconsax.clock), label: "Focus"),
       ],
     );
   }

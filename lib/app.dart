@@ -15,18 +15,51 @@ class MyTodoList extends StatelessWidget {
       title: 'My Todo List',
       initialBinding: ControllerBindings(),
       initialRoute: "/",
-      theme: ThemeData(
-        scaffoldBackgroundColor: Colors.white,
-        navigationBarTheme: NavigationBarThemeData(
-          height: 60,
-          backgroundColor: Colors.grey[300],
-        ),
-      ),
+      theme: _themeData(),
 
       getPages: [
         GetPage(name: "/", page: () => SplashScreen()),
         GetPage(name: "/BottomNavScreen", page: () => BottomNavScreen()),
       ],
+    );
+  }
+
+  ThemeData _themeData() {
+    return ThemeData(
+      scaffoldBackgroundColor: Colors.white,
+
+      appBarTheme: AppBarTheme(backgroundColor: Colors.transparent),
+
+      navigationBarTheme: NavigationBarThemeData(
+        height: 60,
+        backgroundColor: Colors.white,
+        indicatorColor: Colors.blue,
+        iconTheme: WidgetStatePropertyAll(
+          IconThemeData(color: Colors.grey[800], weight: 200, size: 30),
+        ),
+        labelBehavior: NavigationDestinationLabelBehavior.alwaysHide,
+        indicatorShape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(10),
+        ),
+        surfaceTintColor: Colors.blueAccent,
+      ),
+
+      floatingActionButtonTheme: FloatingActionButtonThemeData(
+        backgroundColor: Colors.blue,
+        foregroundColor: Colors.white,
+        iconSize: 32,
+      ),
+
+      textButtonTheme: TextButtonThemeData(
+        style: TextButton.styleFrom(
+          foregroundColor: Colors.grey[700],
+          textStyle: TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
+        ),
+      ),
+
+      textTheme: TextTheme(
+        titleLarge: TextStyle(fontSize: 26, fontWeight: FontWeight.w600),
+      ),
     );
   }
 }
