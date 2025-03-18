@@ -15,8 +15,14 @@ class MyTodoList extends StatelessWidget {
       title: 'My Todo List',
       initialBinding: ControllerBindings(),
       initialRoute: "/",
-      theme: ThemeData(),
-      themeMode: ThemeMode.dark,
+      theme: ThemeData(
+        scaffoldBackgroundColor: Colors.white,
+        navigationBarTheme: NavigationBarThemeData(
+          height: 60,
+          backgroundColor: Colors.grey[300],
+        ),
+      ),
+
       getPages: [
         GetPage(name: "/", page: () => SplashScreen()),
         GetPage(name: "/BottomNavScreen", page: () => BottomNavScreen()),
