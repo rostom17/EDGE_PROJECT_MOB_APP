@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:my_todo_list/core/controller_bindings.dart';
-import 'package:my_todo_list/features/todo_activity/view/bottom_nav_screen.dart';
+import 'package:my_todo_list/features/todo_activity/view/Screens/bottom_nav_screen.dart';
 
-import 'package:my_todo_list/features/todo_activity/view/splash_screen.dart';
+import 'package:my_todo_list/features/todo_activity/view/Screens/splash_screen.dart';
 
 class MyTodoList extends StatelessWidget {
   const MyTodoList({super.key});
@@ -30,18 +30,15 @@ class MyTodoList extends StatelessWidget {
 
       appBarTheme: AppBarTheme(backgroundColor: Colors.transparent),
 
-      navigationBarTheme: NavigationBarThemeData(
-        height: 60,
-        backgroundColor: Colors.white,
-        indicatorColor: Colors.blue,
-        iconTheme: WidgetStatePropertyAll(
-          IconThemeData(color: Colors.grey[800], weight: 200, size: 30),
-        ),
-        labelBehavior: NavigationDestinationLabelBehavior.alwaysHide,
-        indicatorShape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(10),
-        ),
-        surfaceTintColor: Colors.blueAccent,
+      bottomNavigationBarTheme: BottomNavigationBarThemeData(
+        backgroundColor: Colors.grey.shade200,
+        selectedItemColor: Colors.blue,
+        unselectedItemColor: Colors.black,
+        selectedLabelStyle: TextStyle(fontWeight: FontWeight.bold),
+        //enableFeedback: true,
+        //mouseCursor: WidgetStatePropertyAll(MouseCursor.uncontrolled),
+        type: BottomNavigationBarType.shifting,
+        elevation: 4,
       ),
 
       floatingActionButtonTheme: FloatingActionButtonThemeData(

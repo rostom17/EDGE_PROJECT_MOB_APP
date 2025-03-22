@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:my_todo_list/features/todo_activity/view/Widgets/custom_appbar.dart';
+import 'package:my_todo_list/features/todo_activity/view/Widgets/custom_card.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -10,6 +11,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  final List<String> names = ["rostom", "ali", "mehedi", "nagib", "ratan"];
   @override
   Widget build(BuildContext context) {
     final screenHeight = MediaQuery.of(context).size.height;
@@ -52,7 +54,7 @@ class _HomePageState extends State<HomePage> {
                 ],
               ),
               const SizedBox(height: 12),
-              //ListView(children: [ListTile()]),
+              ...listOfWidget(context),
             ],
           ),
         ),
@@ -62,5 +64,13 @@ class _HomePageState extends State<HomePage> {
         child: Icon(Iconsax.add),
       ),
     );
+  }
+
+  List<Widget> listOfWidget(BuildContext context) {
+    return names
+        .map(
+          (item) => Column(children: [const SizedBox(height: 8), CustomCard()]),
+        )
+        .toList();
   }
 }
