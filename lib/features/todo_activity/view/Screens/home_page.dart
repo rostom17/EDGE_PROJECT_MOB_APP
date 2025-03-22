@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:my_todo_list/features/todo_activity/view/Widgets/custom_appbar.dart';
 import 'package:my_todo_list/features/todo_activity/view/Widgets/custom_card.dart';
@@ -60,7 +61,9 @@ class _HomePageState extends State<HomePage> {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+        onPressed: () {
+          Get.toNamed("/createTodoScreen");
+        },
         child: Icon(Iconsax.add),
       ),
     );
