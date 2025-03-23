@@ -10,6 +10,14 @@ class CreateTodoScreen extends StatefulWidget {
 }
 
 class _CreateTodoScreenState extends State<CreateTodoScreen> {
+  int? _selectedCategoryIndex;
+
+  void selectCategory(int idx) {
+    setState(() {
+      _selectedCategoryIndex = idx;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -31,26 +39,77 @@ class _CreateTodoScreenState extends State<CreateTodoScreen> {
               const SizedBox(height: 12),
               Text("Category", style: Theme.of(context).textTheme.titleLarge),
               const SizedBox(height: 12),
-              SizedBox(
-                height: 100,
-                width: double.maxFinite,
-                child: ListView(
-                  scrollDirection: Axis.horizontal,
-                  children: [
-                    ...TodoCategory.values.map(
-                      (item) => Row(
-                        children: [
-                          Chip(label: Text(item.name.toUpperCase())),
-                          const SizedBox(width: 10),
-                        ],
-                      ),
+              _categoryItem(),
+              const SizedBox(height: 12),
+              Text(
+                "Date & Time",
+                style: Theme.of(context).textTheme.titleLarge,
+              ),
+              const SizedBox(height: 12),
+              TextField(),
+              const SizedBox(height: 12),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Expanded(
+                    child: Column(
+                      children: [
+                        Text("Start Time"),
+                        const SizedBox(height: 12),
+                        TextField(),
+                      ],
                     ),
-                  ],
-                ),
+                  ),
+                  Expanded(
+                    child: Column(
+                      children: [
+                        Text("End Time"),
+                        const SizedBox(height: 12),
+                        TextField(),
+                      ],
+                    ),
+                  ),
+                ],
               ),
             ],
           ),
         ),
+      ),
+    );
+  }
+
+  SizedBox _categoryItem() {
+    return SizedBox(
+      height: 50,
+      width: double.maxFinite,
+      child: ListView(
+        scrollDirection: Axis.horizontal,
+        children: [
+          ...TodoCategory.values.map(
+            (item) => Row(
+              children: [
+                InkWell(
+                  overlayColor: WidgetStatePropertyAll(Colors.transparent),
+                  onTap: () {
+                    selectCategory(item.index);
+                  },
+                  child: Chip(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                    color:
+                        _selectedCategoryIndex != null &&
+                                _selectedCategoryIndex == item.index
+                            ? WidgetStatePropertyAll(Colors.green)
+                            : null,
+                    label: Text(item.name.toUpperCase()),
+                  ),
+                ),
+                const SizedBox(width: 10),
+              ],
+            ),
+          ),
+        ],
       ),
     );
   }
