@@ -39,7 +39,7 @@ class _CreateTodoScreenState extends State<CreateTodoScreen> {
               const SizedBox(height: 12),
               Text("Category", style: Theme.of(context).textTheme.titleLarge),
               const SizedBox(height: 12),
-              _categoryItem(),
+              _buildCategoryItem(),
               const SizedBox(height: 12),
               Text(
                 "Date & Time",
@@ -48,29 +48,16 @@ class _CreateTodoScreenState extends State<CreateTodoScreen> {
               const SizedBox(height: 12),
               TextField(),
               const SizedBox(height: 12),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Expanded(
-                    child: Column(
-                      children: [
-                        Text("Start Time"),
-                        const SizedBox(height: 12),
-                        TextField(),
-                      ],
-                    ),
-                  ),
-                  Expanded(
-                    child: Column(
-                      children: [
-                        Text("End Time"),
-                        const SizedBox(height: 12),
-                        TextField(),
-                      ],
-                    ),
-                  ),
-                ],
+              _buildStartAndEndTime(),
+              const SizedBox(height: 12),
+              Text(
+                "Description",
+                style: Theme.of(context).textTheme.titleLarge,
               ),
+              const SizedBox(height: 12),
+              TextField(maxLines: 2),
+              const SizedBox(height: 12),
+              ElevatedButton(onPressed: () {}, child: Text("Create Task")),
             ],
           ),
         ),
@@ -78,7 +65,31 @@ class _CreateTodoScreenState extends State<CreateTodoScreen> {
     );
   }
 
-  SizedBox _categoryItem() {
+  Row _buildStartAndEndTime() {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        _startEndTime("Start Time"),
+        const SizedBox(width: 12),
+        _startEndTime("End Time"),
+      ],
+    );
+  }
+
+  Expanded _startEndTime(String time) {
+    return Expanded(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(time, style: Theme.of(context).textTheme.titleMedium),
+          const SizedBox(height: 12),
+          TextField(),
+        ],
+      ),
+    );
+  }
+
+  SizedBox _buildCategoryItem() {
     return SizedBox(
       height: 50,
       width: double.maxFinite,
@@ -100,9 +111,19 @@ class _CreateTodoScreenState extends State<CreateTodoScreen> {
                     color:
                         _selectedCategoryIndex != null &&
                                 _selectedCategoryIndex == item.index
-                            ? WidgetStatePropertyAll(Colors.green)
-                            : null,
-                    label: Text(item.name.toUpperCase()),
+                            ? WidgetStatePropertyAll(Colors.blue)
+                            : WidgetStatePropertyAll(Colors.blue.shade100),
+                    label: Text(
+                      item.name.toUpperCase(),
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        color:
+                            _selectedCategoryIndex != null &&
+                                    _selectedCategoryIndex == item.index
+                                ? Colors.white
+                                : Colors.black,
+                      ),
+                    ),
                   ),
                 ),
                 const SizedBox(width: 10),

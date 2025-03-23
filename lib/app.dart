@@ -47,6 +47,20 @@ class MyTodoList extends StatelessWidget {
         iconSize: 32,
       ),
 
+      elevatedButtonTheme: ElevatedButtonThemeData(
+        style: ElevatedButton.styleFrom(
+          fixedSize: Size.fromWidth(double.maxFinite),
+          backgroundColor: Colors.blue,
+          foregroundColor: Colors.white,
+          shadowColor: Colors.grey,
+          elevation: 3,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(12),
+          ),
+          textStyle: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+        ),
+      ),
+
       textButtonTheme: TextButtonThemeData(
         style: TextButton.styleFrom(
           foregroundColor: Colors.grey[700],
@@ -56,6 +70,7 @@ class MyTodoList extends StatelessWidget {
 
       textTheme: TextTheme(
         titleLarge: TextStyle(fontSize: 26, fontWeight: FontWeight.w600),
+        titleMedium: TextStyle(fontSize: 22, fontWeight: FontWeight.w500),
       ),
 
       inputDecorationTheme: InputDecorationTheme(
