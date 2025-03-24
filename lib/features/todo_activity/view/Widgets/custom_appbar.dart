@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class CustomAppbar extends StatelessWidget implements PreferredSizeWidget {
   const CustomAppbar({
@@ -7,12 +8,14 @@ class CustomAppbar extends StatelessWidget implements PreferredSizeWidget {
     required this.leadingIcon,
     required this.trailingIcon,
     this.isDrawer = false,
+    this.isBackButton = false,
   });
 
   final String title;
   final IconData leadingIcon;
   final IconData trailingIcon;
   final bool isDrawer;
+  final bool isBackButton;
 
   @override
   Size get preferredSize => Size.fromHeight(kToolbarHeight);
@@ -24,7 +27,12 @@ class CustomAppbar extends StatelessWidget implements PreferredSizeWidget {
       centerTitle: true,
       leading: IconButton(
         onPressed: () {
-          Scaffold.of(context).openDrawer();
+          if (isDrawer) {
+            Scaffold.of(context).openDrawer();
+          }
+          if (isBackButton) {
+            Get.back();
+          }
         },
         icon: Icon(leadingIcon),
       ),

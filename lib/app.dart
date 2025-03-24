@@ -68,16 +68,20 @@ class MyTodoList extends StatelessWidget {
         ),
       ),
 
-      textTheme: TextTheme(
-        titleLarge: TextStyle(fontSize: 26, fontWeight: FontWeight.w600),
-        titleMedium: TextStyle(fontSize: 22, fontWeight: FontWeight.w500),
-      ),
-
       inputDecorationTheme: InputDecorationTheme(
         border: OutlineInputBorder(borderRadius: BorderRadius.circular(20)),
         focusedBorder: OutlineInputBorder(
           borderSide: BorderSide(color: Colors.blue),
           borderRadius: BorderRadius.circular(20),
+        ),
+      ),
+
+      textTheme: TextTheme(
+        titleLarge: TextStyle(fontSize: 26, fontWeight: FontWeight.w600),
+        titleMedium: TextStyle(
+          fontSize: 22,
+          fontWeight: FontWeight.w500,
+          color: Colors.grey[800],
         ),
       ),
     );

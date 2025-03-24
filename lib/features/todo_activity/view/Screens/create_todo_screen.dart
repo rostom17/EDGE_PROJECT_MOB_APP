@@ -1,5 +1,5 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:my_todo_list/core/todo_category.dart';
 
 class CreateTodoScreen extends StatefulWidget {
@@ -24,13 +24,20 @@ class _CreateTodoScreenState extends State<CreateTodoScreen> {
       appBar: AppBar(
         title: Text("Crate New Task"),
         centerTitle: true,
-        leading: IconButton(onPressed: () {}, icon: Icon(CupertinoIcons.back)),
+        leading: IconButton(
+          onPressed: () {
+            Get.back();
+          },
+          icon: Icon(Icons.arrow_back_ios),
+        ),
       ),
       body: SingleChildScrollView(
         physics: BouncingScrollPhysics(),
         child: Padding(
           padding: EdgeInsets.only(top: 12, right: 16, left: 16),
           child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text("Task Name", style: Theme.of(context).textTheme.titleLarge),
@@ -55,12 +62,15 @@ class _CreateTodoScreenState extends State<CreateTodoScreen> {
                 style: Theme.of(context).textTheme.titleLarge,
               ),
               const SizedBox(height: 12),
-              TextField(maxLines: 2),
+              TextField(maxLines: 3),
               const SizedBox(height: 12),
-              ElevatedButton(onPressed: () {}, child: Text("Create Task")),
             ],
           ),
         ),
+      ),
+      bottomNavigationBar: Padding(
+        padding: EdgeInsets.only(bottom: 25, left: 16, right: 16),
+        child: ElevatedButton(onPressed: () {}, child: Text("Create Task")),
       ),
     );
   }
