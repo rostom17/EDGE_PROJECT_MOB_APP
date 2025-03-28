@@ -63,6 +63,16 @@ class MyTodoList extends StatelessWidget {
         ),
       ),
 
+      outlinedButtonTheme: OutlinedButtonThemeData(
+        style: OutlinedButton.styleFrom(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(12),
+          ),
+          side: BorderSide(color: Colors.blue),
+          foregroundColor: Colors.black,
+        ),
+      ),
+
       textButtonTheme: TextButtonThemeData(
         style: TextButton.styleFrom(
           foregroundColor: Colors.grey[700],
@@ -71,20 +81,38 @@ class MyTodoList extends StatelessWidget {
       ),
 
       inputDecorationTheme: InputDecorationTheme(
-        border: OutlineInputBorder(borderRadius: BorderRadius.circular(20)),
-        focusedBorder: OutlineInputBorder(
-          borderSide: BorderSide(color: Colors.blue),
-          borderRadius: BorderRadius.circular(20),
+        enabledBorder: OutlineInputBorder(
+          borderSide: BorderSide(color: Colors.black),
+          borderRadius: BorderRadius.circular(12),
         ),
+
+        focusedBorder: OutlineInputBorder(
+          borderSide: BorderSide(color: Colors.blue, width: 3),
+          borderRadius: BorderRadius.circular(12),
+        ),
+        labelStyle: TextStyle(color: Colors.black),
+      ),
+
+      dividerTheme: DividerThemeData(
+        color: Colors.black,
+        thickness: 2,
+        endIndent: 10,
+        indent: 10,
       ),
 
       textTheme: TextTheme(
+        displayMedium: TextStyle(
+          fontSize: 32,
+          fontWeight: FontWeight.bold,
+          color: Colors.black,
+        ),
         titleLarge: TextStyle(fontSize: 26, fontWeight: FontWeight.w600),
         titleMedium: TextStyle(
           fontSize: 22,
           fontWeight: FontWeight.w500,
           color: Colors.grey[800],
         ),
+        titleSmall: TextStyle(fontSize: 18, color: Colors.black),
       ),
     );
   }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -32,20 +33,67 @@ class _LoginScreenState extends State<LoginScreen> {
           key: _formKey,
           child: Column(
             children: [
-              SizedBox(height: screenHeight * .33),
-              Text("Login"),
-              const SizedBox(height: 20),
+              SizedBox(height: screenHeight * .2),
+              Text("Login", style: Theme.of(context).textTheme.displayMedium),
+              const SizedBox(height: 32),
               _buildLoginField("Email", _emailTEC),
               const SizedBox(height: 20),
               _buildLoginField("Password", _passwordTEC),
+              const SizedBox(height: 32),
+              ElevatedButton(onPressed: () {}, child: Text("Login")),
+              const SizedBox(height: 32),
+              _buildDivider(context),
+              const SizedBox(height: 32),
+              _buildSignInWithGoogleButton(),
+              const Spacer(),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    "Didn't Have Account?",
+                    style: TextStyle(
+                      color: Colors.black,
+                      decoration: TextDecoration.underline,
+                    ),
+                  ),
+                  TextButton(
+                    onPressed: () {},
+                    child: Text(
+                      "Register",
+                      style: TextStyle(color: Colors.blue),
+                    ),
+                  ),
+                ],
+              ),
+              const SizedBox(height: 16),
             ],
           ),
         ),
       ),
-      bottomNavigationBar: Padding(
-        padding: const EdgeInsets.only(left: 12, right: 12, bottom: 10),
-        child: ElevatedButton(onPressed: () {}, child: Text("Login")),
+    );
+  }
+
+  OutlinedButton _buildSignInWithGoogleButton() {
+    return OutlinedButton(
+      onPressed: () {},
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Icon(FontAwesomeIcons.google),
+          const SizedBox(width: 10),
+          Text("Sign In With Google"),
+        ],
       ),
+    );
+  }
+
+  Row _buildDivider(BuildContext context) {
+    return Row(
+      children: [
+        Expanded(child: Divider()),
+        Text("Or", style: Theme.of(context).textTheme.titleSmall),
+        Expanded(child: Divider()),
+      ],
     );
   }
 
