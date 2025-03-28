@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 
-import 'package:my_todo_list/features/todo_activity/controller/bottom_nav_controller.dart';
+import 'package:my_todo_list/features/todo_activity/viewmodel/bottom_nav_controller.dart';
 import 'package:my_todo_list/features/todo_activity/view/Screens/day_activity_screen.dart';
 import 'package:my_todo_list/features/todo_activity/view/Screens/focus_screen.dart';
 import 'package:my_todo_list/features/todo_activity/view/Screens/home_page.dart';

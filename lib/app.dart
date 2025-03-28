@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+
 import 'package:my_todo_list/core/controller_bindings.dart';
+import 'package:my_todo_list/features/authentication/view/login_screen.dart';
 import 'package:my_todo_list/features/todo_activity/view/Screens/bottom_nav_screen.dart';
 import 'package:my_todo_list/features/todo_activity/view/Screens/create_todo_screen.dart';
-
 import 'package:my_todo_list/features/todo_activity/view/Screens/splash_screen.dart';
 
 class MyTodoList extends StatelessWidget {
@@ -15,13 +16,14 @@ class MyTodoList extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'My Todo List',
       initialBinding: ControllerBindings(),
-      initialRoute: "/",
+      initialRoute: "/loginScreen",
       theme: _themeData(),
 
       getPages: [
         GetPage(name: "/", page: () => SplashScreen()),
         GetPage(name: "/BottomNavScreen", page: () => BottomNavScreen()),
         GetPage(name: "/createTodoScreen", page: () => CreateTodoScreen()),
+        GetPage(name: "/loginScreen", page: () => LoginScreen()),
       ],
     );
   }
