@@ -1,1 +1,0 @@
-enum TodoCategory {study, skillUp, workOut, spiritual,}
