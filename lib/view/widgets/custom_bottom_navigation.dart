@@ -24,7 +24,6 @@ class _CustomBottomNavigationState extends State<CustomBottomNavigation> {
       ),
       child: NavigationBar(
         elevation: 5,
-        //backgroundColor: Color.fromARGB(155, 220, 233, 231),
         backgroundColor: Colors.white,
         indicatorColor: Colors.transparent,
         labelBehavior: NavigationDestinationLabelBehavior.onlyShowSelected,

@@ -11,7 +11,7 @@ class TaskWise extends StatelessWidget {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        scaffoldBackgroundColor: ColorPallet.scaffolBackgroundColor,
+        scaffoldBackgroundColor: ColorPallet.mainBackgroundColor,
       ),
 
       home: HomePage(),

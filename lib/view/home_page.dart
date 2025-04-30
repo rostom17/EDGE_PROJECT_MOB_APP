@@ -12,9 +12,9 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   int _selectedIndex = 0;
   List<Widget> pages = [
-    Container(color: ColorPallet.scaffolBackgroundColor),
-    Container(color: Colors.pink),
-    Container(color: Colors.greenAccent),
+    Container(color: ColorPallet.mainBackgroundColor),
+    Container(color: ColorPallet.primaryThemeColor),
+    Container(color: ColorPallet.secondaryThemeColor),
     Container(color: Colors.purple),
   ];
 
