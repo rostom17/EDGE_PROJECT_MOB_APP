@@ -23,6 +23,7 @@ class _CustomBottomNavigationState extends State<CustomBottomNavigation> {
         topRight: Radius.circular(20),
       ),
       child: NavigationBar(
+        height: 75,
         elevation: 5,
         backgroundColor: Colors.white,
         indicatorColor: Colors.transparent,

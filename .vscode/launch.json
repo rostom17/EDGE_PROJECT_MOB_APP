@@ -1,0 +1,58 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "compounds": [
+        {
+            "name": "ALL (andorid, ios, web)",
+            "configurations": [
+                "iOS","Android","Chrome"
+            ]
+        },
+        {
+            "name": "IOS and ANDROID",
+            "configurations": [
+                "iOS","Android"
+            ]
+        },
+    ],
+    "configurations": [
+        {
+            "name": "EDGE_PROJECT_MOB_APP",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "Android",
+            "request": "launch",
+            "type": "dart",
+            "deviceId": "emulator-5554"
+        },
+        {
+            "name": "iOS",
+            "request": "launch",
+            "type": "dart",
+            "deviceId": "31D96B0B-841B-4249-A32F-F168E576EB3F",
+        },
+        {
+            "name": "Chrome",
+            "request": "launch",
+            "type": "dart",
+            "deviceId": "chrome",
+        },
+
+        {
+            "name": "EDGE_PROJECT_MOB_APP (profile mode)",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "EDGE_PROJECT_MOB_APP (release mode)",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        }
+    ]
+}
