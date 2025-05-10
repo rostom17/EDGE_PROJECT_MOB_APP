@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:my_todo_list/core/color_pallet.dart';
+import 'package:my_todo_list/view/pages/home_page.dart';
+import 'package:my_todo_list/view/pages/today_page.dart';
 import 'package:my_todo_list/view/widgets/custom_bottom_navigation.dart';
 
 class BottomNavigationPage extends StatefulWidget {
@@ -13,8 +15,8 @@ class BottomNavigationPage extends StatefulWidget {
 class _BottomNavigationPageState extends State<BottomNavigationPage> {
   int _selectedIndex = 0;
   List<Widget> pages = [
-    Container(color: ColorPallet.mainBackgroundColor),
-    Container(color: ColorPallet.primaryThemeColor),
+    HomePage(),
+    TodayPage(),
     Container(color: ColorPallet.secondaryThemeColor),
     Container(color: Colors.purple),
   ];
