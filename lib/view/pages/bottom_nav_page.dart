@@ -2,14 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:my_todo_list/core/color_pallet.dart';
 import 'package:my_todo_list/view/widgets/custom_bottom_navigation.dart';
 
-class HomePage extends StatefulWidget {
-  const HomePage({super.key});
+class BottomNavigationPage extends StatefulWidget {
+  static const routeName = "/homePage";
+  const BottomNavigationPage({super.key});
 
   @override
-  State<HomePage> createState() => _HomePageState();
+  State<BottomNavigationPage> createState() => _BottomNavigationPageState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _BottomNavigationPageState extends State<BottomNavigationPage> {
   int _selectedIndex = 0;
   List<Widget> pages = [
     Container(color: ColorPallet.mainBackgroundColor),

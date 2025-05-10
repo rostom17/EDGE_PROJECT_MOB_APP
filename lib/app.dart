@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:my_todo_list/core/color_pallet.dart';
-import 'package:my_todo_list/view/pages/home_page.dart';
+import 'package:my_todo_list/view/pages/bottom_nav_page.dart';
 import 'package:my_todo_list/view/pages/on_board_page.dart';
 
 class TaskWise extends StatelessWidget {
@@ -17,7 +17,15 @@ class TaskWise extends StatelessWidget {
       theme: _lightTheme(height, width),
       darkTheme: _darkTheme(),
 
-      home: OnBoardPage(),
+      initialRoute: OnBoardPage.routeName,
+
+      getPages: [
+        GetPage(name: OnBoardPage.routeName, page: () => OnBoardPage()),
+        GetPage(
+          name: BottomNavigationPage.routeName,
+          page: () => BottomNavigationPage(),
+        ),
+      ],
     );
   }
 

@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:my_todo_list/core/color_pallet.dart';
-import 'package:my_todo_list/view/pages/home_page.dart';
+import 'package:my_todo_list/view/pages/bottom_nav_page.dart';
 import 'package:my_todo_list/view/widgets/custom_onboard_page.dart';
 import 'package:my_todo_list/view/widgets/on_board_skip_button.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class OnBoardPage extends StatelessWidget {
+  static const routeName = "/onBoardPage";
   const OnBoardPage({super.key});
 
   @override
@@ -68,7 +69,9 @@ class OnBoardPage extends StatelessWidget {
             elevation: 5,
             shadowColor: Colors.greenAccent.shade200,
           ),
-          onPressed: () {},
+          onPressed: () {
+            Get.toNamed(BottomNavigationPage.routeName);
+          },
           child: Text("Get Started"),
         ),
       ),
