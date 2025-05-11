@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import 'package:my_todo_list/core/color_pallet.dart';
 import 'package:my_todo_list/view/widgets/home_page_appbar.dart';
 import 'package:my_todo_list/view/widgets/home_page_status_bar.dart';
 import 'package:my_todo_list/view/widgets/home_page_task_list_builder.dart';
@@ -25,8 +24,6 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    double screenHeight = MediaQuery.of(context).size.height;
-
     return Scaffold(
       appBar: HomePageAppbar(),
       body: SingleChildScrollView(

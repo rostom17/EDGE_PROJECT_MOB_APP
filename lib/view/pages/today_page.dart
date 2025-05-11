@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
+
 import 'package:my_todo_list/core/color_pallet.dart';
+import 'package:my_todo_list/view/widgets/date_slider.dart';
 
 class TodayPage extends StatefulWidget {
   const TodayPage({super.key});
@@ -9,8 +12,75 @@ class TodayPage extends StatefulWidget {
 }
 
 class _TodayPageState extends State<TodayPage> {
-  int selectedIndex = 1;
-  final double containerHeight = 2400;
+  final double _containerHeight = 2400;
+  DateTime _selectedDateTime = DateTime.now();
+  int _daysInAMonth = 30;
+  List<String> _dayNames = [];
+
+  void onChangedDate(int day) {
+    _selectedDateTime = DateTime(
+      _selectedDateTime.year,
+      _selectedDateTime.month,
+      day,
+      _selectedDateTime.hour,
+      _selectedDateTime.minute,
+      _selectedDateTime.second,
+    );
+    //print(_selectedDateTime);
+  }
+
+  void getDayNames(DateTime startDate, DateTime endDate) {
+    List<String> names = [];
+    DateFormat formatter = DateFormat('EEE');
+    DateTime curDate = DateTime(startDate.year, startDate.month, startDate.day);
+
+    while (curDate.isBefore(endDate) ||
+        curDate.year == endDate.year &&
+            curDate.month == endDate.month &&
+            curDate.day == endDate.day) {
+      names.add(formatter.format(curDate));
+      curDate = curDate.add(const Duration(days: 1));
+    }
+    _dayNames = names;
+  }
+
+  void getDaysInMonth(DateTime dateTime) {
+    DateTime firstDay = DateTime(dateTime.year, dateTime.month + 1, 1);
+    DateTime lastDay = firstDay.subtract(const Duration(days: 1));
+    _daysInAMonth = lastDay.day;
+
+    DateTime startDate = DateTime(
+      _selectedDateTime.year,
+      _selectedDateTime.month,
+      1,
+    );
+    DateTime endDate = DateTime(
+      _selectedDateTime.year,
+      _selectedDateTime.month,
+      _daysInAMonth,
+    );
+
+    getDayNames(startDate, endDate);
+  }
+
+  void pickDate() async {
+    var dateTime = await showDatePicker(
+      context: context,
+      firstDate: DateTime(2024),
+      lastDate: DateTime(2026),
+    );
+    if (dateTime != null) {
+      _selectedDateTime = dateTime;
+    }
+    getDaysInMonth(_selectedDateTime);
+    setState(() {});
+  }
+
+  @override
+  void initState() {
+    getDaysInMonth(_selectedDateTime);
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +101,7 @@ class _TodayPageState extends State<TodayPage> {
             child: SizedBox(
               width: 45,
               child: IconButton(
-                onPressed: () {},
+                onPressed: pickDate,
                 icon: Image.asset("assets/icons/calendar.png"),
               ),
             ),
@@ -42,10 +112,17 @@ class _TodayPageState extends State<TodayPage> {
         child: Column(
           children: [
             const SizedBox(height: 20),
-            SizedBox(height: 70, child: _buildCalenderDate()),
+            SizedBox(
+              height: 70,
+              child: DateSlider(
+                noOfDays: _daysInAMonth,
+                dayList: _dayNames,
+                selectedDate: _selectedDateTime.day,
+                onChangedDate: onChangedDate,
+              ),
+            ),
             const SizedBox(height: 20),
             Container(
-              height: containerHeight,
               width: double.maxFinite,
               decoration: BoxDecoration(
                 color: ColorPallet.pureWhite,
@@ -60,7 +137,7 @@ class _TodayPageState extends State<TodayPage> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: List.generate(24, (index) {
                     return SizedBox(
-                      height: (containerHeight - 20) / 24,
+                      height: (_containerHeight - 20) / 24,
                       child: Text("${index + 1}"),
                     );
                   }),
@@ -70,64 +147,6 @@ class _TodayPageState extends State<TodayPage> {
           ],
         ),
       ),
-    );
-  }
-
-  ListView _buildCalenderDate() {
-    return ListView.builder(
-      scrollDirection: Axis.horizontal,
-      itemBuilder:
-          (context, index) => GestureDetector(
-            onTap: () {
-              setState(() {
-                selectedIndex = index + 1;
-              });
-            },
-            child: Padding(
-              padding: EdgeInsets.only(right: 12, left: index == 0 ? 12 : 0),
-              child: AnimatedContainer(
-                duration: Duration(milliseconds: 400),
-                width: 50,
-                decoration: BoxDecoration(
-                  color:
-                      index + 1 == selectedIndex
-                          ? Colors.black87
-                          : Colors.white,
-                  borderRadius: BorderRadius.circular(16),
-                ),
-                alignment: Alignment.center,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      (index + 1).toString(),
-                      style: TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.w900,
-                        color:
-                            selectedIndex == index + 1
-                                ? Colors.white
-                                : Colors.black,
-                      ),
-                    ),
-                    Text(
-                      'Wed',
-                      style: TextStyle(
-                        fontSize: 14,
-                        fontWeight: FontWeight.w700,
-                        color:
-                            selectedIndex == index + 1
-                                ? Colors.white
-                                : Colors.black,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ),
-          ),
-
-      itemCount: 30,
     );
   }
 }
