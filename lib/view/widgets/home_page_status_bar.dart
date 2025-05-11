@@ -1,17 +1,12 @@
-
 import 'package:flutter/material.dart';
 import 'package:my_todo_list/core/color_pallet.dart';
 
 class HomePageSatusBar extends StatelessWidget {
-  const HomePageSatusBar({
-    super.key,
-    required this.screenHeight,
-  });
-
-  final double screenHeight;
+  const HomePageSatusBar({super.key});
 
   @override
   Widget build(BuildContext context) {
+    double screenHeight = MediaQuery.of(context).size.height;
     return SizedBox(
       height: screenHeight * .25,
       width: double.maxFinite,

@@ -10,7 +10,6 @@ class HomePageTaskListBuilder extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 800,
       padding: EdgeInsets.only(left: 16, right: 16),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.only(

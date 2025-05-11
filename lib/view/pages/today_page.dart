@@ -20,7 +20,10 @@ class _TodayPageState extends State<TodayPage> {
         centerTitle: false,
         title: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
-          children: [Text("Schedule"), Text("12 May 2025")],
+          children: [
+            Text("@Today", style: Theme.of(context).textTheme.titleMedium),
+            Text("12 May 2025", style: Theme.of(context).textTheme.bodySmall),
+          ],
         ),
         actions: [
           Padding(

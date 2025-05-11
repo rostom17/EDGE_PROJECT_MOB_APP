@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+
+import 'package:my_todo_list/core/color_pallet.dart';
 import 'package:my_todo_list/view/widgets/custom_check_box.dart';
 
 class CustomTaskWidget extends StatefulWidget {
@@ -20,11 +22,10 @@ class _CustomTaskWidgetState extends State<CustomTaskWidget> {
 
       children: [
         SizedBox(
-          height: 80,
           width: double.maxFinite,
           child: Row(
             children: [
-              CircleAvatar(child: Image.asset("assets/icons/goal.png")),
+              SizedBox(width: 40, child: Image.asset("assets/icons/goal.png")),
 
               Padding(
                 padding: const EdgeInsets.only(
@@ -37,16 +38,41 @@ class _CustomTaskWidgetState extends State<CustomTaskWidget> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      "Task Title: ${widget.eachTask}",
+                      reSizeTaskTitle("Task Title: ${widget.eachTask} "),
                       style: Theme.of(context).textTheme.bodyLarge,
                     ),
-
-                    Text(
-                      "Short Description of One Line",
-                      style: Theme.of(context).textTheme.bodySmall,
+                    const SizedBox(height: 8),
+                    Row(
+                      children: [
+                        SizedBox(
+                          width: 75,
+                          child: Row(
+                            children: [
+                              Icon(
+                                Icons.alarm,
+                                size: 16,
+                                color: ColorPallet.primaryTextColor,
+                              ),
+                              const SizedBox(width: 4),
+                              Text(
+                                '2h',
+                                style: Theme.of(context).textTheme.bodySmall,
+                              ),
+                            ],
+                          ),
+                        ),
+                        Icon(
+                          Icons.flag_outlined,
+                          size: 16,
+                          color: ColorPallet.primaryTextColor,
+                        ),
+                        const SizedBox(width: 4),
+                        Text(
+                          '2h',
+                          style: Theme.of(context).textTheme.bodySmall,
+                        ),
+                      ],
                     ),
-
-                    Row(children: [SizedBox()]),
                   ],
                 ),
               ),
@@ -65,5 +91,12 @@ class _CustomTaskWidgetState extends State<CustomTaskWidget> {
         Divider(indent: 55, color: Colors.grey.shade200),
       ],
     );
+  }
+
+  String reSizeTaskTitle(String title) {
+    if (title.length > 18) {
+      return "${title.substring(0, 18)}...";
+    }
+    return title;
   }
 }
