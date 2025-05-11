@@ -27,7 +27,16 @@ class HomePageTaskListBuilder extends StatelessWidget {
                 "On Goinng Task",
                 style: Theme.of(context).textTheme.titleSmall,
               ),
-              TextButton(onPressed: () {}, child: Text("See All")),
+              DropdownButton(
+                borderRadius: BorderRadius.circular(20),
+                icon: Icon(Icons.menu),
+                value: "Time",
+                items: [
+                  DropdownMenuItem(value: "Priority", child: Text("Priority")),
+                  DropdownMenuItem(value: "Time", child: Text("Time")),
+                ],
+                onChanged: (value) {},
+              ),
             ],
           ),
           const SizedBox(height: 12),

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import 'package:my_todo_list/core/color_pallet.dart';
-import 'package:my_todo_list/core/viewmodel/date_time_viewmodel.dart';
+import 'package:my_todo_list/viewmodel/date_time_viewmodel.dart';
 import 'package:my_todo_list/view/widgets/date_slider.dart';
 import 'package:my_todo_list/view/widgets/today_page_appbar.dart';
 

@@ -41,6 +41,7 @@ flutter:
 
   assets:
     - assets/icons/
+    - assets/categoryIcons/
     - assets/animations/
     - assets/todo_logo.svg
     - assets/todo_icon.png

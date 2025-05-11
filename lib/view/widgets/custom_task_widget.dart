@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:my_todo_list/core/color_pallet.dart';
+import 'package:my_todo_list/core/constants.dart';
 import 'package:my_todo_list/view/widgets/custom_check_box.dart';
 
 class CustomTaskWidget extends StatefulWidget {
@@ -25,7 +26,10 @@ class _CustomTaskWidgetState extends State<CustomTaskWidget> {
           width: double.maxFinite,
           child: Row(
             children: [
-              SizedBox(width: 40, child: Image.asset("assets/icons/goal.png")),
+              SizedBox(
+                width: 40,
+                child: Image.asset(getCategoryIcons(SubCategory.exercise)),
+              ),
 
               Padding(
                 padding: const EdgeInsets.only(

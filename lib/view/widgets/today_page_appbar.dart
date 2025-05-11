@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:my_todo_list/core/viewmodel/date_time_viewmodel.dart';
+import 'package:my_todo_list/viewmodel/date_time_viewmodel.dart';
 
 class TodayPageAppBar extends StatelessWidget implements PreferredSizeWidget {
   TodayPageAppBar({super.key});
