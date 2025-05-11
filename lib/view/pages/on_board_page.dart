@@ -65,7 +65,7 @@ class OnBoardPage extends StatelessWidget {
           style: ElevatedButton.styleFrom(
             backgroundColor: ColorPallet.primaryThemeColor,
             foregroundColor: Colors.white,
-            fixedSize: Size(MediaQuery.of(context).size.width * 55, 60),
+            fixedSize: Size(MediaQuery.of(context).size.width * 55, 40),
             elevation: 5,
             shadowColor: Colors.greenAccent.shade200,
           ),

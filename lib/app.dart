@@ -1,5 +1,9 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
+
 import 'package:my_todo_list/core/color_pallet.dart';
 import 'package:my_todo_list/view/pages/bottom_nav_page.dart';
 import 'package:my_todo_list/view/pages/on_board_page.dart';
@@ -42,36 +46,28 @@ class TaskWise extends StatelessWidget {
         surfaceTintColor: Colors.transparent,
       ),
 
-      textTheme: TextTheme(
-        displaySmall: TextStyle(
-          fontSize: 24,
-          fontWeight: FontWeight.w600,
+      textTheme: GoogleFonts.robotoTextTheme().copyWith(
+        titleMedium: TextStyle(
+          fontSize: 22,
+          fontWeight: FontWeight.bold,
           color: ColorPallet.primaryTextColor,
-          //fontFamily: "San Francisco",
         ),
-        headlineLarge: TextStyle(
+
+        titleSmall: TextStyle(
           fontSize: 20,
-          fontWeight: FontWeight.w700,
+          fontWeight: FontWeight.bold,
           color: ColorPallet.primaryTextColor,
-          fontFamily: "San Francisco",
         ),
 
         bodyLarge: TextStyle(
-          fontSize: 18,
-          fontWeight: FontWeight.w600,
+          fontSize: 17,
+          fontWeight: FontWeight.w700,
           color: ColorPallet.primaryTextColor,
-          fontFamily: "arial",
         ),
 
-        bodyMedium: TextStyle(
-          fontSize: 16,
-          fontWeight: FontWeight.w500,
-          color: ColorPallet.secondaryTextColor,
-        ),
-
-        labelLarge: TextStyle(
+        bodySmall: TextStyle(
           fontSize: 13,
-          fontWeight: FontWeight.w400,
+          fontWeight: FontWeight.w500,
           color: ColorPallet.secondaryTextColor,
         ),
       ),
@@ -86,7 +82,7 @@ class TaskWise extends StatelessWidget {
       textButtonTheme: TextButtonThemeData(
         style: TextButton.styleFrom(
           foregroundColor: ColorPallet.primaryThemeColor,
-          textStyle: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+          textStyle: TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
         ),
       ),
 
