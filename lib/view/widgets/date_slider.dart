@@ -1,18 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:my_todo_list/core/viewmodel/date_time_viewmodel.dart';
 
 class DateSlider extends StatelessWidget {
-  const DateSlider({
+  DateSlider({
     required this.noOfDays,
     required this.dayList,
     required this.selectedDate,
-    required this.onChangedDate,
     super.key,
   });
 
   final int selectedDate;
   final int noOfDays;
   final List<String> dayList;
-  final Function(int newDate) onChangedDate;
+
+  final DateTimeViewmodel _dateTimeViewmodel = Get.find<DateTimeViewmodel>();
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +22,9 @@ class DateSlider extends StatelessWidget {
       scrollDirection: Axis.horizontal,
       itemBuilder:
           (context, index) => GestureDetector(
-            onTap: onChangedDate(index + 1),
+            onTap: () {
+              _dateTimeViewmodel.updateDate(index + 1);
+            },
             child: Padding(
               padding: EdgeInsets.only(right: 12, left: index == 0 ? 12 : 0),
               child: AnimatedContainer(

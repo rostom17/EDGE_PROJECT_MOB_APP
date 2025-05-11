@@ -1,8 +1,7 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:my_todo_list/controller_binder.dart';
 
 import 'package:my_todo_list/core/color_pallet.dart';
 import 'package:my_todo_list/view/pages/bottom_nav_page.dart';
@@ -20,6 +19,8 @@ class TaskWise extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: _lightTheme(height, width),
       darkTheme: _darkTheme(),
+
+      initialBinding: ControllerBinder(),
 
       initialRoute: OnBoardPage.routeName,
 
