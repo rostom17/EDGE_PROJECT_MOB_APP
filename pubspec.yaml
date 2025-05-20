@@ -25,6 +25,7 @@ dependencies:
   smooth_page_indicator: ^1.2.1
   google_fonts: ^6.2.1
   calendar_date_picker2: ^2.0.0
+  syncfusion_flutter_calendar: ^29.2.4
   
   
 

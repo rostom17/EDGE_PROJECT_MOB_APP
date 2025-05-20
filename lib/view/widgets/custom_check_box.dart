@@ -3,7 +3,7 @@ import 'package:my_todo_list/core/color_pallet.dart';
 
 enum TaskStatus { pending, done, failed }
 
-class CustomCheckBox extends StatelessWidget {
+class CustomCheckBox extends StatefulWidget {
   final TaskStatus status;
   final Function(TaskStatus) onChanged;
 
@@ -14,27 +14,68 @@ class CustomCheckBox extends StatelessWidget {
   });
 
   @override
+  State<CustomCheckBox> createState() => _CustomCheckBoxState();
+}
+
+class _CustomCheckBoxState extends State<CustomCheckBox> {
+  late TaskStatus _currentStatus;
+  IconData? _currentIcon;
+
+  @override
+  void initState() {
+    super.initState();
+    _currentStatus = widget.status;
+    _updateIcon();
+  }
+
+  @override
+  void didUpdateWidget(CustomCheckBox oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (oldWidget.status != widget.status) {
+      _currentStatus = widget.status;
+      _delayedIconUpdate();
+    }
+  }
+
+  void _updateIcon() {
+    switch (_currentStatus) {
+      case TaskStatus.done:
+        _currentIcon = Icons.check;
+        break;
+      case TaskStatus.failed:
+        _currentIcon = Icons.close;
+        break;
+      default:
+        _currentIcon = null;
+    }
+  }
+
+  void _delayedIconUpdate() async {
+    _currentIcon = null;
+    setState(() {});
+    await Future.delayed(const Duration(milliseconds: 100));
+    _updateIcon();
+    setState(() {});
+  }
+
+  @override
   Widget build(BuildContext context) {
-    IconData? icon;
     Color fillColor;
     Color borderColor;
     Color iconColor;
 
-    switch (status) {
+    switch (_currentStatus) {
       case TaskStatus.done:
-        icon = Icons.check;
         fillColor = ColorPallet.primaryThemeColor;
         iconColor = Colors.white;
         borderColor = ColorPallet.primaryThemeColor;
         break;
       case TaskStatus.failed:
-        icon = Icons.close;
         fillColor = ColorPallet.secondaryThemeColor;
         iconColor = Colors.white;
         borderColor = ColorPallet.secondaryThemeColor;
         break;
       default:
-        icon = null;
         fillColor = Colors.transparent;
         iconColor = Colors.transparent;
         borderColor = Colors.grey;
@@ -44,7 +85,7 @@ class CustomCheckBox extends StatelessWidget {
     return GestureDetector(
       onTap: () {
         TaskStatus newStatus;
-        switch (status) {
+        switch (_currentStatus) {
           case TaskStatus.pending:
             newStatus = TaskStatus.done;
             break;
@@ -55,9 +96,12 @@ class CustomCheckBox extends StatelessWidget {
             newStatus = TaskStatus.pending;
             break;
         }
-        onChanged(newStatus);
+
+        widget.onChanged(newStatus); 
       },
-      child: Container(
+      child: AnimatedContainer(
+        duration: const Duration(milliseconds: 200),
+        curve: Curves.easeInOut,
         width: 24,
         height: 24,
         decoration: BoxDecoration(
@@ -65,12 +109,18 @@ class CustomCheckBox extends StatelessWidget {
           color: fillColor,
           border: Border.all(color: borderColor, width: 2),
         ),
-        child:
-            icon != null
-                ? Center(
-                  child: Icon(icon, size: 18, color: iconColor, weight: 60),
-                )
-                : null,
+        child: AnimatedSwitcher(
+          duration: const Duration(milliseconds: 300),
+          child:
+              _currentIcon != null
+                  ? Icon(
+                    _currentIcon,
+                    key: ValueKey(_currentIcon),
+                    size: 18,
+                    color: iconColor,
+                  )
+                  : const SizedBox.shrink(),
+        ),
       ),
     );
   }

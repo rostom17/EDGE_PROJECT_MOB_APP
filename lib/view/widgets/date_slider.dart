@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:my_todo_list/core/color_pallet.dart';
 import 'package:my_todo_list/viewmodel/date_time_viewmodel.dart';
 
 class DateSlider extends StatelessWidget {
@@ -32,7 +33,9 @@ class DateSlider extends StatelessWidget {
                 width: 50,
                 decoration: BoxDecoration(
                   color:
-                      index + 1 == selectedDate ? Colors.black87 : Colors.white,
+                      index + 1 == selectedDate
+                          ? ColorPallet.primaryThemeColor
+                          : Colors.white,
                   borderRadius: BorderRadius.circular(16),
                 ),
                 alignment: Alignment.center,

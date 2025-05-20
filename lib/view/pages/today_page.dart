@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:syncfusion_flutter_calendar/calendar.dart';
 
-import 'package:my_todo_list/core/color_pallet.dart';
 import 'package:my_todo_list/viewmodel/date_time_viewmodel.dart';
 import 'package:my_todo_list/view/widgets/date_slider.dart';
 import 'package:my_todo_list/view/widgets/today_page_appbar.dart';
@@ -15,7 +15,6 @@ class TodayPage extends StatefulWidget {
 
 class _TodayPageState extends State<TodayPage> {
   final DateTimeViewmodel _dateTimeViewmodel = Get.find<DateTimeViewmodel>();
-  final double _containerHeight = 2400;
 
   @override
   void initState() {
@@ -43,27 +42,14 @@ class _TodayPageState extends State<TodayPage> {
                 },
               ),
             ),
-            const SizedBox(height: 20),
+
             Container(
-              width: double.maxFinite,
-              decoration: BoxDecoration(
-                color: ColorPallet.pureWhite,
-                borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(20),
-                  topRight: Radius.circular(20),
-                ),
-              ),
-              child: Padding(
-                padding: const EdgeInsets.only(top: 20, left: 20, right: 20),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: List.generate(24, (index) {
-                    return SizedBox(
-                      height: (_containerHeight - 20) / 24,
-                      child: Text("${index + 1}"),
-                    );
-                  }),
-                ),
+              height: 700,
+
+              child: SfCalendar(
+                cellBorderColor: Colors.red,
+                cellEndPadding: 10,
+                view: CalendarView.day,
               ),
             ),
           ],

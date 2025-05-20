@@ -24,11 +24,12 @@ class HomePageTaskListBuilder extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
-                "On Goinng Task",
+                "Today's Task",
                 style: Theme.of(context).textTheme.titleSmall,
               ),
               DropdownButton(
                 borderRadius: BorderRadius.circular(20),
+                
                 icon: Icon(Icons.menu),
                 value: "Time",
                 items: [

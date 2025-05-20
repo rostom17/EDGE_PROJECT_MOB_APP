@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import 'package:my_todo_list/core/color_pallet.dart';
@@ -53,27 +54,32 @@ class _CustomTaskWidgetState extends State<CustomTaskWidget> {
                           child: Row(
                             children: [
                               Icon(
-                                Icons.alarm,
+                                CupertinoIcons.clock,
                                 size: 16,
-                                color: ColorPallet.primaryTextColor,
+                                color: ColorPallet.primaryTextColor.withAlpha(
+                                  150,
+                                ),
                               ),
                               const SizedBox(width: 4),
                               Text(
                                 '2h',
-                                style: Theme.of(context).textTheme.bodySmall,
+                                style: Theme.of(context).textTheme.bodySmall!
+                                    .copyWith(color: Colors.grey),
                               ),
                             ],
                           ),
                         ),
                         Icon(
-                          Icons.flag_outlined,
+                          CupertinoIcons.flag,
                           size: 16,
-                          color: ColorPallet.primaryTextColor,
+                          color: ColorPallet.primaryTextColor.withAlpha(150),
                         ),
                         const SizedBox(width: 4),
                         Text(
                           '2h',
-                          style: Theme.of(context).textTheme.bodySmall,
+                          style: Theme.of(
+                            context,
+                          ).textTheme.bodySmall!.copyWith(color: Colors.grey),
                         ),
                       ],
                     ),
